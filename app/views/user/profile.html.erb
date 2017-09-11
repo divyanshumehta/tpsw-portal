@@ -1,0 +1,55 @@
+<script>
+  $(document).ready(function(){
+	$("#edit_btn").click(function(event){
+		event.preventDefault();
+		$("input").prop('disabled', false);
+	});
+});
+
+</script>
+<style>
+	@import url(https://fonts.googleapis.com/css?family=Fjalla+One);
+	@import url(https://fonts.googleapis.com/css?family=Asap);
+	#title {
+			font-family: Fjalla One
+	}
+</style>
+<div class="container">
+    <div class="card">
+       	<!--  header-->
+       	<div class="container">
+       		<div class="row" >
+	                    <div class="col s4 offset-s4">
+	                    <span id="title" class="card-title"><h2 align="center" style="font-size: 3vw;">PROFILE</h2></span>
+	                	</div>
+	                	<div class="col s3 m3 l3"></div>
+	                	<div class="col s1 m1 l1" style="padding-top: 3%;padding-left:4% ">
+								<a class="btn tooltipped btn-floating btn-large waves-effect waves-light red" id="edit_btn" data-position="bottom" data-delay="50" data-tooltip="Edit Details">
+								<i class="material-icons" style="">edit</i></a>						
+	            		</div>
+	        </div>
+	        <div class="row">
+		<!-- FORM DETAIL -->
+					    <form action='/user/update_form' method='post'>
+					    	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+					      	<ul>
+					        	<% @info.each do |key,value| %>
+						        	<div class="input-field col s12">	
+							        	<input id = "<%= key %>" name="<%= key %>" value="<%= value %>" type="text" class="validate" disabled="true">
+							        	<label for="<%= key %>">
+								        	<font><%= key.split('_').map(&:capitalize).join(' ') %></font>
+							        	</label>
+							        </div>
+						        <%end%>
+					        	<div align="center">
+									<button class="btn waves-effect waves-light" type="submit" value="Submit" name="action">
+									   SUBMIT
+									   <i class="material-icons right">send</i>
+									</button>
+						        </div>
+					        </ul>
+					    </form>
+			</div>
+		</div>
+	</div>
+</div>

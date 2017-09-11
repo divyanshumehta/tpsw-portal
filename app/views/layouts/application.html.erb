@@ -42,12 +42,12 @@
   <body>
     
     <div>
-      <nav style="background-color: rgb(27, 170, 170)">
+      <nav style="background-color: rgb(27, 170, 170);">
         <div class="nav-wrapper">
-          <font style="font-size: 200%; padding: 1em"> NIT Durgapur Placement Portal</font>
-          
+          <a href="/"><font style="font-size: 200%; padding: 1em"> NIT Durgapur Placement Portal</font></a>
           <ul id="dropdown1" class="dropdown-content">
-          <li><a href="/users/edit">Profile</a></li>
+          <li><a href="/users/edit">Security</a></li>
+          <li><a href="/user/profile" >Profile</a></li>
           <li class="divider"></li>
           <li> <%= link_to destroy_user_session_path, method: :delete do %>Sign Out<% end %></li>
           </ul>
@@ -61,7 +61,7 @@
             <% end %>
             </li>
             <% if current_user!=nil %>
-            <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons right" style="font-size: 350%">apps</i></a></li>
+            <li><a class="dropdown-button" data-position="bottom" data-delay="50" data-tooltip="Settings" href="#!" data-activates="dropdown1"><i class="material-icons right" style="font-size: 350%">apps</i></a></li>
             <% end %>
           </ul>
         </div>
@@ -75,7 +75,7 @@
     
     
     <%- flash.each do |name, msg| -%>
-    <div id='hideMe' align="right" style="color: #64dd17">
+    <div id='hideMe' align="right" style="color: #64dd17;padding-right: 2em">
         <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
         </div>
         <%- end -%>
